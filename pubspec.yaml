@@ -1,0 +1,63 @@
+name: tadbirrah
+description: "A clean, scalable Flutter project architecture using Feature-First / Clean Architecture."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # Routing
+  go_router: ^14.8.1
+
+  # State Management
+  flutter_bloc: ^9.1.1
+  bloc: ^9.0.0
+
+  # Dependency Injection
+  get_it: ^8.0.3
+
+  # Networking
+  dio: ^5.8.0+1
+  pretty_dio_logger: ^1.4.0
+  retrofit: ^4.4.2
+
+  # Functional & Error Handling
+  json_annotation: ^4.9.0
+  dartz: ^0.10.1
+
+  # Local Storage
+  shared_preferences: ^2.5.2
+  flutter_secure_storage: ^9.2.4
+
+  # Responsiveness
+  flutter_screenutil: ^5.9.3
+
+  # UI / Styling & Fonts
+  google_fonts: ^6.2.1
+  hugeicons: any
+  flutter_svg: ^2.0.17
+  cached_network_image: ^3.4.1
+  animated_snack_bar: ^0.4.0
+
+  # Localization
+  easy_localization: ^3.0.7
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner: ^2.4.15
+  json_serializable: ^6.9.4
+  retrofit_generator: ^9.1.9
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
