@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/cache/cache_helper.dart';
@@ -8,6 +9,7 @@ import 'core/utils/app_strings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   // Initialize SharedPreferences CacheHelper
   await CacheHelper.init();
@@ -15,7 +17,13 @@ void main() async {
   // Setup Dependency Injection (GetIt)
   await setupGetIt();
 
-  runApp(const TadbirrahApp());
+  runApp(EasyLocalization(
+      supportedLocales: const [Locale('ar'), Locale('en')],
+      startLocale: const Locale('ar'),
+      path: 'assets/localization',
+      fallbackLocale: const Locale('ar'),
+      saveLocale: true,
+      child: const TadbirrahApp()));
 }
 
 class TadbirrahApp extends StatelessWidget {
@@ -27,8 +35,11 @@ class TadbirrahApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) {
+      builder: (ctx, child) {
         return MaterialApp.router(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
           title: AppStrings.appName,
           debugShowCheckedModeBanner: false,
           theme: AppThemes.light,

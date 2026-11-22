@@ -24,7 +24,7 @@ dependencies:
   # Networking
   dio: ^5.8.0+1
   pretty_dio_logger: ^1.4.0
-  retrofit: ^4.4.2
+  retrofit: 4.4.2 # <-- شيلنا الـ ^ عشان يلتزم بالإصدار المتوافق مع الـ generator
 
   # Functional & Error Handling
   json_annotation: ^4.9.0
@@ -47,6 +47,7 @@ dependencies:
   # Localization
   easy_localization: ^3.0.7
   intl: ^0.20.2
+  flutter_native_splash: ^2.4.8
 
 dev_dependencies:
   flutter_test:
@@ -56,8 +57,14 @@ dev_dependencies:
   json_serializable: ^6.9.4
   retrofit_generator: ^9.1.9
 
+flutter_assets:
+  assets_path: assets/
+  output_path: lib/constants/
+  filename: assets.dart
+
 flutter:
   uses-material-design: true
   assets:
     - assets/images/
     - assets/icons/
+    - assets/localization/

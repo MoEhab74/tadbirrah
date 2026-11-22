@@ -38,7 +38,7 @@ class AppButton extends StatelessWidget {
           backgroundColor: backgroundColor ?? AppColors.primary,
           disabledBackgroundColor: AppColors.primary.withValues(alpha: 0.5),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius ?? 12.r),
+            borderRadius: BorderRadius.circular(borderRadius ?? 16.r),
           ),
           elevation: 0,
         ),
@@ -65,7 +65,7 @@ class AppButton extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
-                      style: AppTextStyles.font16Medium.copyWith(
+                      style: AppTextStyles.semiBold16.copyWith(
                         color: textColor ?? Colors.white,
                         fontWeight: FontWeight.w600,
                       ),

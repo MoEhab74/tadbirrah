@@ -24,7 +24,9 @@ Future<bool?> showAppWarningDialog(
         title: Row(
           children: [
             Icon(
-              isDestructive ? Icons.warning_amber_rounded : Icons.info_outline_rounded,
+              isDestructive
+                  ? Icons.warning_amber_rounded
+                  : Icons.info_outline_rounded,
               color: isDestructive ? AppColors.error : AppColors.warning,
               size: 26.sp,
             ),
@@ -32,7 +34,7 @@ Future<bool?> showAppWarningDialog(
             Expanded(
               child: Text(
                 title,
-                style: AppTextStyles.font18Medium.copyWith(
+                style: AppTextStyles.semiBold14.copyWith(
                   fontWeight: FontWeight.bold,
                   color: Theme.of(ctx).colorScheme.onSurface,
                 ),
@@ -42,7 +44,7 @@ Future<bool?> showAppWarningDialog(
         ),
         content: Text(
           message,
-          style: AppTextStyles.font14Regular.copyWith(
+          style: AppTextStyles.regular14.copyWith(
             color: Theme.of(ctx).colorScheme.onSurface.withValues(alpha: 0.8),
           ),
         ),
@@ -51,12 +53,14 @@ Future<bool?> showAppWarningDialog(
             onPressed: () => Navigator.of(ctx).pop(false),
             child: Text(
               cancelText,
-              style: AppTextStyles.font14Medium.copyWith(color: AppColors.grey600),
+              style:
+                  AppTextStyles.semiBold14.copyWith(color: AppColors.grey600),
             ),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: isDestructive ? AppColors.error : AppColors.primary,
+              backgroundColor:
+                  isDestructive ? AppColors.error : AppColors.primary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8.r),
               ),
@@ -67,7 +71,7 @@ Future<bool?> showAppWarningDialog(
             },
             child: Text(
               confirmText,
-              style: AppTextStyles.font14Medium.copyWith(color: Colors.white),
+              style: AppTextStyles.semiBold14.copyWith(color: Colors.white),
             ),
           ),
         ],

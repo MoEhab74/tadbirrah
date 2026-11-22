@@ -1,68 +1,87 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'app_colors.dart';
 
-class AppTextStyles {
-  AppTextStyles._();
+abstract class AppTextStyles {
+  static TextStyle _base({
+    required double fontSize,
+    required FontWeight fontWeight,
+    required double height,
+    double letterSpacing = 0,
+    Color? color,
+  }) {
+    return GoogleFonts.cairo(
+      fontSize: fontSize.sp,
+      fontWeight: fontWeight,
+      height: height,
+      letterSpacing: letterSpacing,
+      color: color,
+    );
+  }
 
-  static TextStyle get font28Bold => GoogleFonts.cairo(
-        fontSize: 28.sp,
-        fontWeight: FontWeight.bold,
-        color: AppColors.textPrimaryLight,
-      );
+  static TextStyle get bold40 => _base(
+    fontSize: 40,
+    fontWeight: FontWeight.w700,
+    height: 48 / 40,
+    letterSpacing: -.02,
+  );
 
-  static TextStyle get font24Bold => GoogleFonts.cairo(
-        fontSize: 24.sp,
-        fontWeight: FontWeight.bold,
-        color: AppColors.textPrimaryLight,
-      );
+  static TextStyle get semiBold32 => _base(
+    fontSize: 32,
+    fontWeight: FontWeight.w600,
+    height: 40 / 32,
+    letterSpacing: -.01,
+  );
 
-  static TextStyle get font20SemiBold => GoogleFonts.cairo(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.w600,
-        color: AppColors.textPrimaryLight,
-      );
+  static TextStyle get semiBold28 =>
+      _base(fontSize: 28, fontWeight: FontWeight.w600, height: 36 / 28);
 
-  static TextStyle get font18Medium => GoogleFonts.cairo(
-        fontSize: 18.sp,
-        fontWeight: FontWeight.w500,
-        color: AppColors.textPrimaryLight,
-      );
+  static TextStyle get semiBold24 =>
+      _base(fontSize: 24, fontWeight: FontWeight.w600, height: 32 / 24);
 
-  static TextStyle get font16Medium => GoogleFonts.cairo(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w500,
-        color: AppColors.textPrimaryLight,
-      );
+  static TextStyle get semiBold20 =>
+      _base(fontSize: 20, fontWeight: FontWeight.w600, height: 28 / 20);
 
-  static TextStyle get font16Regular => GoogleFonts.cairo(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.normal,
-        color: AppColors.textPrimaryLight,
-      );
+  static TextStyle get regular18 =>
+      _base(fontSize: 18, fontWeight: FontWeight.w400, height: 28 / 18);
 
-  static TextStyle get font14Regular => GoogleFonts.cairo(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.normal,
-        color: AppColors.textSecondaryLight,
-      );
+  static TextStyle get regular16 =>
+      _base(fontSize: 16, fontWeight: FontWeight.w400, height: 24 / 16);
 
-  static TextStyle get font14Medium => GoogleFonts.cairo(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w500,
-        color: AppColors.textPrimaryLight,
-      );
+  static TextStyle get regular14 =>
+      _base(fontSize: 14, fontWeight: FontWeight.w400, height: 20 / 14);
 
-  static TextStyle get font12Regular => GoogleFonts.cairo(
-        fontSize: 12.sp,
-        fontWeight: FontWeight.normal,
-        color: AppColors.textSecondaryLight,
-      );
+  static TextStyle get medium14 => _base(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    height: 20 / 14,
+    letterSpacing: .01,
+  );
 
-  static TextStyle get font12Medium => GoogleFonts.cairo(
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w500,
-        color: AppColors.textPrimaryLight,
-      );
+  static TextStyle get semiBold12 => _base(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    height: 16 / 12,
+    letterSpacing: .05,
+  );
+
+  static TextStyle get semiBold14 => _base(
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    height: 20 / 14,
+    letterSpacing: .01,
+  );
+
+  static TextStyle get regular12 => _base(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    height: 16 / 12,
+    letterSpacing: .05,
+  );
+
+  static TextStyle get semiBold16 => _base(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    height: 24 / 16,
+  );
 }

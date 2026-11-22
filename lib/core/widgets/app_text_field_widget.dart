@@ -47,16 +47,16 @@ class AppTextFormField extends StatelessWidget {
       enabled: enabled,
       onChanged: onChanged,
       maxLines: maxLines,
-      style: AppTextStyles.font14Medium.copyWith(
+      style: AppTextStyles.semiBold16.copyWith(
         color: isDark ? AppColors.textPrimaryDark : AppColors.textPrimaryLight,
       ),
       decoration: InputDecoration(
         hintText: hintText,
         labelText: labelText,
-        hintStyle: AppTextStyles.font14Regular.copyWith(
+        hintStyle: AppTextStyles.semiBold14.copyWith(
           color: isDark ? AppColors.grey500 : AppColors.grey400,
         ),
-        labelStyle: AppTextStyles.font14Regular.copyWith(
+        labelStyle: AppTextStyles.semiBold14.copyWith(
           color: isDark ? AppColors.grey400 : AppColors.grey600,
         ),
         prefixIcon: prefixIcon,
@@ -65,35 +65,38 @@ class AppTextFormField extends StatelessWidget {
         fillColor: isDark ? AppColors.surfaceDark : AppColors.surfaceLight,
         contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(14.r),
           borderSide: BorderSide(
-            color: isDark ? AppColors.grey600 : AppColors.border,
+            color: isDark ? AppColors.outlineVariant.withValues(alpha: 0.3) : AppColors.outlineVariant,
+            width: 1.5,
           ),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(14.r),
           borderSide: BorderSide(
-            color: isDark ? AppColors.grey600 : AppColors.border,
+            color: isDark ? AppColors.outlineVariant.withValues(alpha: 0.3) : AppColors.outlineVariant,
+            width: 1.5,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
-          borderSide: const BorderSide(
-            color: AppColors.primary,
-            width: 1.5,
+          borderRadius: BorderRadius.circular(14.r),
+          borderSide: BorderSide(
+            color: isDark ? AppColors.inversePrimary : AppColors.primary,
+            width: 2,
           ),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
-          borderSide: const BorderSide(
-            color: AppColors.error,
-          ),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(14.r),
           borderSide: const BorderSide(
             color: AppColors.error,
             width: 1.5,
+          ),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14.r),
+          borderSide: const BorderSide(
+            color: AppColors.error,
+            width: 2,
           ),
         ),
       ),
