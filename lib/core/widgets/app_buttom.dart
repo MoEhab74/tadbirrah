@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hugeicons/hugeicons.dart';
 import '../theme/styles/app_colors.dart';
 import '../theme/styles/app_text_styles.dart';
 
@@ -12,7 +13,7 @@ class AppButton extends StatelessWidget {
   final Color? backgroundColor;
   final Color? textColor;
   final double? borderRadius;
-  final Widget? icon;
+  final List<List<dynamic>>? icon;
 
   const AppButton({
     super.key,
@@ -56,7 +57,11 @@ class AppButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   if (icon != null) ...[
-                    icon!,
+                    HugeIcon(
+                      size: 20.sp,
+                      color: textColor ?? Colors.white,
+                      icon: icon!,
+                    ),
                     SizedBox(width: 8.w),
                   ],
                   Flexible(
