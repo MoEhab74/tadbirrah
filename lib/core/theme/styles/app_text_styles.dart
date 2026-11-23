@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tadbirrah/core/theme/styles/app_colors.dart';
 
 abstract class AppTextStyles {
   static TextStyle _base({
@@ -20,18 +21,18 @@ abstract class AppTextStyles {
   }
 
   static TextStyle get bold40 => _base(
-    fontSize: 40,
-    fontWeight: FontWeight.w700,
-    height: 48 / 40,
-    letterSpacing: -.02,
-  );
+        fontSize: 40,
+        fontWeight: FontWeight.w700,
+        height: 48 / 40,
+        letterSpacing: -.02,
+      );
 
   static TextStyle get semiBold32 => _base(
-    fontSize: 32,
-    fontWeight: FontWeight.w600,
-    height: 40 / 32,
-    letterSpacing: -.01,
-  );
+        fontSize: 32,
+        fontWeight: FontWeight.w600,
+        height: 40 / 32,
+        letterSpacing: -.01,
+      );
 
   static TextStyle get semiBold28 =>
       _base(fontSize: 28, fontWeight: FontWeight.w600, height: 36 / 28);
@@ -52,36 +53,43 @@ abstract class AppTextStyles {
       _base(fontSize: 14, fontWeight: FontWeight.w400, height: 20 / 14);
 
   static TextStyle get medium14 => _base(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
-    height: 20 / 14,
-    letterSpacing: .01,
-  );
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        height: 20 / 14,
+        letterSpacing: .01,
+      );
 
   static TextStyle get semiBold12 => _base(
-    fontSize: 12,
-    fontWeight: FontWeight.w600,
-    height: 16 / 12,
-    letterSpacing: .05,
-  );
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+        height: 16 / 12,
+        letterSpacing: .05,
+      );
 
   static TextStyle get semiBold14 => _base(
-    fontSize: 14,
-    fontWeight: FontWeight.w600,
-    height: 20 / 14,
-    letterSpacing: .01,
-  );
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        height: 20 / 14,
+        letterSpacing: .01,
+      );
 
   static TextStyle get regular12 => _base(
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    height: 16 / 12,
-    letterSpacing: .05,
-  );
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        height: 16 / 12,
+        letterSpacing: .05,
+      );
 
   static TextStyle get semiBold16 => _base(
-    fontSize: 16,
-    fontWeight: FontWeight.w600,
-    height: 24 / 16,
-  );
+        fontSize: 16,
+        fontWeight: FontWeight.w600,
+        height: 24 / 16,
+      );
+
+  static TextStyle get bold22 => _base(
+        fontSize: 22,
+        fontWeight: FontWeight.w700,
+        height: 28 / 22,
+        color: AppColors.onSurface,
+      );
 }

@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:tadbirrah/constants/assets.dart';
+import 'package:tadbirrah/core/routing/app_routes.dart';
 import 'package:tadbirrah/core/theme/styles/app_colors.dart';
 import 'package:tadbirrah/core/theme/styles/app_text_styles.dart';
 import 'package:tadbirrah/core/widgets/app_buttom.dart';
 import 'package:tadbirrah/core/widgets/app_sized_box.dart';
 import 'package:tadbirrah/features/onboarding/presentation/widgets/onboarding_container_widget.dart';
 
-class OnBoardingView extends StatefulWidget {
+class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});
 
-  @override
-  State<OnBoardingView> createState() => _OnBoardingViewState();
-}
-
-class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,19 +116,11 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 const AppSizedBox(height: 40),
                 AppButton(
                   onPressed: () {
-                    // Navigate to the next screen or perform any action
+                    context.pushReplacement(
+                        AppRoutes.auth); // Replace with your desired route
                   },
                   text: 'ابدأ دلوقتي',
                   icon: HugeIcons.strokeRoundedCookingPot,
-                ),
-                const AppSizedBox(height: 16),
-                AppButton(
-                  onPressed: () {
-                    // Navigate to the next screen or perform any action
-                  },
-                  text: 'عندك حساب بالفعل؟',
-                  backgroundColor: AppColors.surfaceContainerLow,
-                  textColor: AppColors.onSurfaceVariant,
                 ),
                 const AppSizedBox(height: 32),
                 Row(

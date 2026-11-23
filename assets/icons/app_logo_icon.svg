@@ -1,0 +1,58 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="terracottaBg" x1="64" y1="32" x2="448" y2="480" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#B84A2A"/>
+      <stop offset="100%" stop-color="#842506"/>
+    </linearGradient>
+    <linearGradient id="parchmentPot" x1="256" y1="248" x2="256" y2="404" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFF8F6"/>
+      <stop offset="100%" stop-color="#F5DED5"/>
+    </linearGradient>
+    <linearGradient id="oliveLeaf" x1="256" y1="98" x2="320" y2="170" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E5F6C9"/>
+      <stop offset="100%" stop-color="#BCCDA1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded Terracotta App Icon Background -->
+  <rect width="512" height="512" rx="116" fill="url(#terracottaBg)"/>
+
+  <!-- Subtle Earthen Halo Behind Pot -->
+  <circle cx="256" cy="272" r="168" fill="#FFF8F6" fill-opacity="0.06"/>
+
+  <!-- Rising Steam Curl (Left) -->
+  <path d="M224 176C214 158 218 140 230 128C238 120 238 108 232 98"
+        stroke="#FFDBD1" stroke-width="11" stroke-linecap="round" stroke-opacity="0.85"/>
+
+  <!-- Fresh Olive Leaf Sprouting from Steam (Right) -->
+  <path d="M262 174C262 134 288 104 334 102C332 146 302 174 262 174Z"
+        fill="url(#oliveLeaf)"/>
+  <path d="M266 170C284 152 304 134 322 114"
+        stroke="#4B5937" stroke-width="5.5" stroke-linecap="round" stroke-opacity="0.7"/>
+
+  <!-- Tagine / Clay Pot Dome Lid -->
+  <path d="M150 246C162 204 202 184 256 184C310 184 350 204 362 246H150Z"
+        fill="#FFF8F6"/>
+  <!-- Lid Ceramic Knob -->
+  <circle cx="256" cy="176" r="14" fill="#FFF8F6"/>
+
+  <!-- Left & Right Earthen Pot Handles -->
+  <path d="M126 286C96 286 96 326 130 330"
+        stroke="#FFF8F6" stroke-width="16" stroke-linecap="round"/>
+  <path d="M386 286C416 286 416 326 382 330"
+        stroke="#FFF8F6" stroke-width="16" stroke-linecap="round"/>
+
+  <!-- Sculpted Clay Pot Rim -->
+  <rect x="114" y="256" width="284" height="28" rx="14" fill="#FFF8F6"/>
+
+  <!-- Earthen Clay Bowl Body -->
+  <path d="M130 284H382L372 328C362 372 320 402 256 402C192 402 150 372 140 328L130 284Z"
+        fill="url(#parchmentPot)"/>
+
+  <!-- Artisanal Clay Accent Band & Smile Curve -->
+  <path d="M158 318C186 334 220 342 256 342C292 342 326 334 354 318"
+        stroke="#B84A2A" stroke-width="10" stroke-linecap="round" stroke-opacity="0.35"/>
+
+  <!-- Ceramic Base Foot -->
+  <rect x="198" y="396" width="116" height="14" rx="7" fill="#FFDBD1" fill-opacity="0.85"/>
+</svg>

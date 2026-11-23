@@ -1,6 +1,10 @@
 // ignore: deprecated_member_use
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:tadbirrah/core/services/get_it_service.dart';
+import 'package:tadbirrah/features/auth/presentation/manager/cubit/auth_cubit.dart';
+import 'package:tadbirrah/features/auth/presentation/views/auth_view.dart';
 import 'package:tadbirrah/features/onboarding/presentation/views/on_boarding_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/home/presentation/views/profile_view.dart';
@@ -26,6 +30,13 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.onboarding,
         builder: (context, state) => const OnBoardingView(),
+      ),
+      GoRoute(
+        path: AppRoutes.auth,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<AuthCubit>(),
+          child: const AuthView(),
+        ),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {

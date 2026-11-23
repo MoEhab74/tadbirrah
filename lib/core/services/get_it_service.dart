@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:tadbirrah/features/auth/presentation/manager/cubit/auth_cubit.dart';
 
 import '../api/api_consumer.dart';
 import '../api/api_endpoints.dart';
@@ -69,5 +70,12 @@ Future<void> setupGetIt() async {
   // API Consumer
   getIt.registerLazySingleton<ApiConsumer>(
     () => DioConsumer(dio: getIt<Dio>()),
+  );
+
+  // Authentication
+
+  // AuthCubit will take the AuthRepository as a dependency, which will be provided by the getIt service locator.
+  getIt.registerLazySingleton<AuthCubit>(
+    () => AuthCubit(),
   );
 }
