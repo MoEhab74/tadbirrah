@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tadbirrah/core/functions/validate_auth_fields.dart';
+import 'package:tadbirrah/core/routing/app_routes.dart';
 import 'package:tadbirrah/core/theme/styles/app_colors.dart';
 import 'package:tadbirrah/core/theme/styles/app_text_styles.dart';
 import 'package:tadbirrah/core/widgets/app_buttom.dart';
@@ -29,6 +31,8 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
   }
 
   void _onSubmit() {
+    // Temporarily just for ui
+    context.push(AppRoutes.householdSetup);
     // if (_formKey.currentState?.validate() ?? false) {
     //   context.read<AuthCubit>().login(
     //         email: _emailController.text.trim(),

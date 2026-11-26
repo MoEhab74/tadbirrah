@@ -6,6 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tadbirrah/features/auth/data/repos/auth_repo.dart';
 import 'package:tadbirrah/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:tadbirrah/features/auth/presentation/manager/cubit/auth_cubit.dart';
+import 'package:tadbirrah/features/household_setup/presentation/manager/cubit/household_setup_cubit.dart';
 
 import '../api/api_consumer.dart';
 import '../api/api_endpoints.dart';
@@ -85,5 +86,10 @@ Future<void> setupGetIt() async {
 
   getIt.registerFactory<AuthCubit>(
     () => AuthCubit(getIt<AuthRepo>()),
+  );
+
+  // Household Setup
+  getIt.registerFactory<HouseholdSetupCubit>(
+    () => HouseholdSetupCubit(),
   );
 }

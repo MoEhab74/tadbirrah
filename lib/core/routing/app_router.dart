@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:tadbirrah/core/services/get_it_service.dart';
 import 'package:tadbirrah/features/auth/presentation/manager/cubit/auth_cubit.dart';
 import 'package:tadbirrah/features/auth/presentation/views/auth_view.dart';
+import 'package:tadbirrah/features/household_setup/presentation/manager/cubit/household_setup_cubit.dart';
+import 'package:tadbirrah/features/household_setup/presentation/views/household_view.dart';
 import 'package:tadbirrah/features/onboarding/presentation/views/on_boarding_view.dart';
 import '../../features/home/presentation/views/home_view.dart';
 import '../../features/home/presentation/views/profile_view.dart';
@@ -36,6 +38,13 @@ class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) => getIt<AuthCubit>(),
           child: const AuthView(),
+        ),
+      ),
+      GoRoute(
+        path: AppRoutes.householdSetup,
+        builder: (context, state) => BlocProvider(
+          create: (context) => getIt<HouseholdSetupCubit>(),
+          child: const HouseholdView(),
         ),
       ),
       StatefulShellRoute.indexedStack(
