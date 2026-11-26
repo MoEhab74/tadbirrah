@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tadbirrah/core/api/api_endpoints.dart';
 import 'core/cache/cache_helper.dart';
 import 'core/routing/app_router.dart';
 import 'core/services/get_it_service.dart';
@@ -16,6 +19,15 @@ void main() async {
 
   // Setup Dependency Injection (GetIt)
   await setupGetIt();
+
+  // Initialize .env
+  await dotenv.load(fileName: ".env");
+
+  // Initalize Supabase through get_it service
+  await Supabase.initialize(
+    url: ApiEndpoints.supabaseUrl,
+    publishableKey: ApiKeys.supabasePublishableKey ?? 'YOUR_SUPABASE_PUBLISHABLE_KEY',
+  );
 
   runApp(EasyLocalization(
       supportedLocales: const [Locale('ar'), Locale('en')],

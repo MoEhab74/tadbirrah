@@ -3,31 +3,32 @@ class ValidateAuthFields {
 
   static String? validateEmail(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Email is required';
+      return 'من فضلك أدخل البريد الإلكتروني';
     }
     final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
     if (!emailRegex.hasMatch(value.trim())) {
-      return 'Please enter a valid email address';
+      return 'من فضلك أدخل بريد إلكتروني صالح';
     }
     return null;
   }
 
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Password is required';
+      return 'من فضلك أدخل كلمة المرور';
     }
     if (value.length < 8) {
-      return 'Password must be at least 8 characters';
+      return 'كلمة المرور يجب أن تكون على الأقل 8 أحرف';
     }
     return null;
   }
 
-  static String? validateConfirmPassword(String? value, String? originalPassword) {
+  static String? validateConfirmPassword(
+      String? value, String? originalPassword) {
     if (value == null || value.isEmpty) {
-      return 'Please confirm your password';
+      return 'من فضلك أدخل تأكيد كلمة المرور';
     }
     if (value != originalPassword) {
-      return 'Passwords do not match';
+      return 'كلمة المرور وتأكيد كلمة المرور غير متطابقين';
     }
     return null;
   }

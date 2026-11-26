@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tadbirrah/core/functions/validate_auth_fields.dart';
 import 'package:tadbirrah/core/theme/styles/app_colors.dart';
 import 'package:tadbirrah/core/theme/styles/app_text_styles.dart';
 import 'package:tadbirrah/core/widgets/app_buttom.dart';
 import 'package:tadbirrah/core/widgets/app_sized_box.dart';
 import 'package:tadbirrah/core/widgets/app_text_field_widget.dart';
+import 'package:tadbirrah/features/auth/presentation/manager/cubit/auth_cubit.dart';
 
 class LoginFormWidget extends StatefulWidget {
   const LoginFormWidget({super.key});
@@ -26,9 +29,12 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
   }
 
   void _onSubmit() {
-    if (_formKey.currentState?.validate() ?? false) {
-      // TODO: Trigger login via AuthCubit
-    }
+    // if (_formKey.currentState?.validate() ?? false) {
+    //   context.read<AuthCubit>().login(
+    //         email: _emailController.text.trim(),
+    //         password: _passwordController.text,
+    //       );
+    // }
   }
 
   @override
@@ -49,15 +55,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             controller: _emailController,
             hintText: 'ahmed.family@email.com',
             keyboardType: TextInputType.emailAddress,
-            validator: (value) {
-              if (value == null || value.trim().isEmpty) {
-                return 'من فضلك أدخل البريد الإلكتروني';
-              }
-              if (!value.contains('@')) {
-                return 'البريد الإلكتروني غير صحيح';
-              }
-              return null;
-            },
+            validator: ValidateAuthFields.validateEmail,
           ),
           const AppSizedBox(height: 16),
           Text(
@@ -82,15 +80,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
                 color: AppColors.onSurfaceVariant,
               ),
             ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'من فضلك أدخل كلمة المرور';
-              }
-              if (value.length < 6) {
-                return 'كلمة المرور يجب أن تكون 6 أحرف على الأقل';
-              }
-              return null;
-            },
+            validator: ValidateAuthFields.validatePassword,
           ),
           const AppSizedBox(height: 12),
           Align(
@@ -113,9 +103,14 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
             ),
           ),
           const AppSizedBox(height: 16),
-          AppButton(
-            text: 'دخول لمطبخ البيت',
-            onPressed: _onSubmit,
+          BlocBuilder<AuthCubit, AuthState>(
+            builder: (context, state) {
+              return AppButton(
+                text: 'دخول لمطبخ البيت',
+                isLoading: state is AuthLoading,
+                onPressed: _onSubmit,
+              );
+            },
           ),
         ],
       ),

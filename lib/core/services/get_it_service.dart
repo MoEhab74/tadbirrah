@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tadbirrah/features/auth/data/repos/auth_repo.dart';
+import 'package:tadbirrah/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:tadbirrah/features/auth/presentation/manager/cubit/auth_cubit.dart';
 
 import '../api/api_consumer.dart';
@@ -52,7 +55,7 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<Dio>(() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: ApiEndpoints.baseUrl,
+        baseUrl: ApiEndpoints.supabaseUrl,
         connectTimeout: ApiEndpoints.connectTimeout,
         receiveTimeout: ApiEndpoints.receiveTimeout,
         sendTimeout: ApiEndpoints.sendTimeout,
@@ -72,10 +75,15 @@ Future<void> setupGetIt() async {
     () => DioConsumer(dio: getIt<Dio>()),
   );
 
-  // Authentication
+  // Supabase Instance to be used across the app for authentication and database operations
+  getIt.registerLazySingleton<SupabaseClient>(() => Supabase.instance.client);
 
-  // AuthCubit will take the AuthRepository as a dependency, which will be provided by the getIt service locator.
-  getIt.registerLazySingleton<AuthCubit>(
-    () => AuthCubit(),
+  // Authentication
+  getIt.registerLazySingleton<AuthRepo>(
+    () => AuthRepoImpl(supabaseClient: getIt<SupabaseClient>()),
+  );
+
+  getIt.registerFactory<AuthCubit>(
+    () => AuthCubit(getIt<AuthRepo>()),
   );
 }

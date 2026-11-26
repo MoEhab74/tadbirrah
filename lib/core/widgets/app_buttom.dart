@@ -49,7 +49,7 @@ class AppButton extends StatelessWidget {
                 height: 22.h,
                 child: const CircularProgressIndicator(
                   strokeWidth: 2.5,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  valueColor: AlwaysStoppedAnimation<Color>(AppColors.onPrimary),
                 ),
               )
             : Row(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:tadbirrah/core/functions/animated_snack_bar.dart';
+import 'package:tadbirrah/core/routing/app_routes.dart';
 import 'package:tadbirrah/core/widgets/app_sized_box.dart';
 import 'package:tadbirrah/features/auth/presentation/manager/cubit/auth_cubit.dart';
 import 'package:tadbirrah/features/auth/presentation/widgets/auth_bottoms_bg_widget.dart';
@@ -13,41 +16,60 @@ class AuthView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 16.0.h),
-            child: SingleChildScrollView(
-              child: AppSizedBox(
-                width: double.infinity,
-                child: BlocBuilder<AuthCubit, AuthState>(
-                  buildWhen: (previous, current) =>
-                      current is ToggleAuthModeState,
-                  builder: (context, state) {
-                    final cubit = context.read<AuthCubit>();
-                    final isLogin = cubit.isLogin;
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const AuthHeaderWidget(),
-                        const AppSizedBox(height: 32),
-                        AuthBottomsBackgroundWidget(
-                          isLogin: isLogin,
-                          onLoginTap: () => cubit.toggleAuthMode(true),
-                          onRegisterTap: () => cubit.toggleAuthMode(false),
-                        ),
-                        const AppSizedBox(height: 20),
-                        FormContainerWidget(
-                          isLogin: isLogin,
-                        ),
-                        const AppSizedBox(height: 24),
-                        const AuthFooterSectionWidget(),
-                        const AppSizedBox(height: 16),
-                      ],
-                    );
-                  },
+    return BlocListener<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is AuthSuccess) {
+          AppSnackBar.showSuccess(
+            context,
+            message: state.isSignUp
+                ? 'أهلاً بيكم في تدبيرة! تم إنشاء حساب البيت بنجاح'
+                : 'أهلاً بعودتكم في تدبيرة!',
+          );
+          // context.go(AppRoutes.home);
+        } else if (state is AuthFailure) {
+          AppSnackBar.showError(
+            context,
+            message: state.errorMessage,
+          );
+        }
+      },
+      child: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Scaffold(
+          body: SafeArea(
+            child: Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: 16.0.w, vertical: 16.0.h),
+              child: SingleChildScrollView(
+                child: AppSizedBox(
+                  width: double.infinity,
+                  child: BlocBuilder<AuthCubit, AuthState>(
+                    buildWhen: (previous, current) =>
+                        current is ToggleAuthModeState,
+                    builder: (context, state) {
+                      final cubit = context.read<AuthCubit>();
+                      final isLogin = cubit.isLogin;
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const AuthHeaderWidget(),
+                          const AppSizedBox(height: 32),
+                          AuthBottomsBackgroundWidget(
+                            isLogin: isLogin,
+                            onLoginTap: () => cubit.toggleAuthMode(true),
+                            onRegisterTap: () => cubit.toggleAuthMode(false),
+                          ),
+                          const AppSizedBox(height: 20),
+                          FormContainerWidget(
+                            isLogin: isLogin,
+                          ),
+                          const AppSizedBox(height: 24),
+                          const AuthFooterSectionWidget(),
+                          const AppSizedBox(height: 16),
+                        ],
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
@@ -57,5 +79,3 @@ class AuthView extends StatelessWidget {
     );
   }
 }
-
-
