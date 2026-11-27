@@ -22,9 +22,13 @@ class AuthBottomWidget extends StatelessWidget {
       child: Center(
         child: AnimatedDefaultTextStyle(
           duration: const Duration(milliseconds: 200),
-          style: AppTextStyles.semiBold12.copyWith(
-            color: isSelected ? AppColors.primary : AppColors.onSurfaceVariant,
-          ),
+          style: isSelected
+              ? AppTextStyles.semiBold14.copyWith(
+                  color: AppColors.primary,
+                )
+              : AppTextStyles.semiBold12.copyWith(
+                  color: AppColors.onSurfaceVariant,
+                ),
           child: Text(text),
         ),
       ),

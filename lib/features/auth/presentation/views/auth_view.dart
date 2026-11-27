@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tadbirrah/core/functions/animated_snack_bar.dart';
-import 'package:tadbirrah/core/routing/app_routes.dart';
 import 'package:tadbirrah/core/widgets/app_sized_box.dart';
 import 'package:tadbirrah/features/auth/presentation/manager/cubit/auth_cubit.dart';
 import 'package:tadbirrah/features/auth/presentation/widgets/auth_bottoms_bg_widget.dart';
