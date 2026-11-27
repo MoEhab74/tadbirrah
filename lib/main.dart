@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:tadbirrah/core/api/api_endpoints.dart';
@@ -11,8 +12,9 @@ import 'core/theme/themes/app_themes.dart';
 import 'core/utils/app_strings.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // Initialize SharedPreferences CacheHelper
   await CacheHelper.init();
@@ -28,7 +30,7 @@ void main() async {
     url: ApiEndpoints.supabaseUrl,
     publishableKey: ApiKeys.supabasePublishableKey ?? 'YOUR_SUPABASE_PUBLISHABLE_KEY',
   );
-
+  FlutterNativeSplash.remove();
   runApp(EasyLocalization(
       supportedLocales: const [Locale('ar'), Locale('en')],
       startLocale: const Locale('ar'),

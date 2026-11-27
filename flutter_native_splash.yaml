@@ -1,11 +1,18 @@
 flutter_native_splash:
-  color: "#FEF3C7"
-  image: assets/images/splash.png
+  color: "#FCF8F5"
+  image: assets/images/splash_logo.png
 
+  # branding: assets/images/splash_branding.png
+  # branding_mode: bottom
+
+  # إعدادات Android 12+ (مهمة جداً عشان القص الدائري)
   android_12:
-    image: assets/images/splash.png
-    color: "#FEF3C7"
+    color: "#FCF8F5"
+    image: assets/images/splash_logo.png
+    icon_background_color: "#FCF8F5"
+    # branding: assets/images/splash_branding.png
 
+  fullscreen: true
   android: true
   ios: true
   web: false
