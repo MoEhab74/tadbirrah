@@ -47,8 +47,14 @@ app.*.map.json
 # Widget Preview related
 .widget_preview/
 
+# Ignore environment files (keep .env.example as template)
+.env
+.env.*
+!.env.example
+
 # Ignore supabase folder
 .supabase/
+supabase/
 
 # Ignore AGENTS.md
 AGENTS.md
